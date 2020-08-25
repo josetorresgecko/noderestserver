@@ -34,6 +34,7 @@ app.post('/login', function(req, res) {
         res.json({
             ok: true,
             usuario: usuarioDB,
+            seed: process.env.SEED,
             token
         });
     });

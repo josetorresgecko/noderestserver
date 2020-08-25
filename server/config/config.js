@@ -15,5 +15,4 @@ if (process.env.NODE_ENV === 'dev') {
 } else {
     urlDB = 'mongodb+srv://akiro:rSjL11SYMc5UJmM3@cluster0.b644x.mongodb.net/cafe';
 }
-urlDB = 'mongodb+srv://akiro:rSjL11SYMc5UJmM3@cluster0.b644x.mongodb.net/cafe';
 process.env.URLDB = urlDB;

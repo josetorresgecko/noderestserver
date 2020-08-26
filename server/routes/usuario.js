@@ -4,7 +4,7 @@ const _ = require('underscore');
 const app = express();
 const Usuario = require('../models/usuario');
 const { verificaToken, verificaAdminRole } = require('../middledwares/autenticacion');
-app.get('/usuarios', verificaToken, function(req, res) {
+app.get('/usuarios', verificaToken, (req, res) => {
     let desde = req.query.desde || 0;
     let limite = req.query.limite || 5;
     let estado = req.query.estado || true;
@@ -30,7 +30,7 @@ app.get('/usuarios', verificaToken, function(req, res) {
 
         });
 });
-app.post('/usuarios', [verificaToken, verificaAdminRole], function(req, res) {
+app.post('/usuarios', [verificaToken, verificaAdminRole], (req, res) => {
     let body = req.body;
     let usuario = new Usuario({
         nombre: body.nombre,
@@ -51,7 +51,7 @@ app.post('/usuarios', [verificaToken, verificaAdminRole], function(req, res) {
         });
     });
 });
-app.put('/usuarios/:id', [verificaToken, verificaAdminRole], function(req, res) {
+app.put('/usuarios/:id', [verificaToken, verificaAdminRole], (req, res) => {
     let body = _.pick(req.body, ['nombre', 'email', 'img', 'role', 'estado']);
     let id = req.params.id;
     Usuario.findByIdAndUpdate(id, body, { new: true, runValidators: true }, (err, usuarioDB) => {
@@ -68,7 +68,7 @@ app.put('/usuarios/:id', [verificaToken, verificaAdminRole], function(req, res) 
 
     });
 });
-app.delete('/usuarios/:id', [verificaToken, verificaAdminRole], function(req, res) {
+app.delete('/usuarios/:id', [verificaToken, verificaAdminRole], (req, res) => {
     let id = req.params.id;
     let cambiarEstado = {
         estado: false

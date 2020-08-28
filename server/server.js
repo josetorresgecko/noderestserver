@@ -1,6 +1,4 @@
 require('./config/config');
-const usuario = require('./routes/usuario');
-const login = require('./routes/login');
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');

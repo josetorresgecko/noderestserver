@@ -73,7 +73,6 @@ app.delete('/usuarios/:id', [verificaToken, verificaAdminRole], (req, res) => {
     let cambiarEstado = {
         estado: false
     };
-    //Usuario.findByIdAndRemove(id, (err, usuarioBorrado) => {
     Usuario.findByIdAndUpdate(id, cambiarEstado, (err, usuarioBorrado) => {
         if (err) {
             return res.status(400).json({
